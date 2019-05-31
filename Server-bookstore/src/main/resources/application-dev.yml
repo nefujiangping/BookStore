@@ -1,0 +1,28 @@
+server:
+  port: 8443
+
+spring:
+  datasource:
+    username: db_username
+    password: corresponding_passwd
+    url: jdbc:mysql://localhost:3306/db_bookstore?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # turn off thymeleaf cache (Recommandation: dev environment: false, production environment: true)
+  thymeleaf:
+    cache: false
+  devtools:
+    restart:
+      # add directories that need to restart
+      additional-paths: src/main/java,src/main/resources
+      # exclude directories that don't need to restart
+      exclude: static/**,public/**
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.bookstore.dbentity
+logging:
+  level:
+    com:
+      bookstore:
+        mapper: debug
+#showSql

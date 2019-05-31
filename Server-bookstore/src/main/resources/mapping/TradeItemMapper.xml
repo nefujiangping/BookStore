@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookstore.mapper.TradeItemMapper">
+  <resultMap id="BaseResultMap" type="com.bookstore.dbentity.TradeItem">
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="trade_id" jdbcType="INTEGER" property="tradeId" />
+    <result column="book_isbn" jdbcType="VARCHAR" property="bookIsbn" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="amount" jdbcType="REAL" property="amount" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    item_id, trade_id, book_isbn, quantity, amount
+  </sql>
+  <select id="selectByExample" parameterType="com.bookstore.dbentity.TradeItemExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tradeitem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.bookstore.dbentity.TradeItemExample">
+    delete from tradeitem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bookstore.dbentity.TradeItem" useGeneratedKeys="true" keyProperty="itemId">
+    insert into tradeitem (item_id, trade_id, book_isbn, 
+      quantity, amount)
+    values (#{itemId,jdbcType=BIGINT}, #{tradeId,jdbcType=INTEGER}, #{bookIsbn,jdbcType=VARCHAR}, 
+      #{quantity,jdbcType=INTEGER}, #{amount,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bookstore.dbentity.TradeItem">
+    insert into tradeitem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="tradeId != null">
+        trade_id,
+      </if>
+      <if test="bookIsbn != null">
+        book_isbn,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="tradeId != null">
+        #{tradeId,jdbcType=INTEGER},
+      </if>
+      <if test="bookIsbn != null">
+        #{bookIsbn,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bookstore.dbentity.TradeItemExample" resultType="java.lang.Integer">
+    select count(*) from tradeitem
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tradeitem
+    <set>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.tradeId != null">
+        trade_id = #{record.tradeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookIsbn != null">
+        book_isbn = #{record.bookIsbn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.quantity != null">
+        quantity = #{record.quantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.amount != null">
+        amount = #{record.amount,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tradeitem
+    set item_id = #{record.itemId,jdbcType=BIGINT},
+      trade_id = #{record.tradeId,jdbcType=INTEGER},
+      book_isbn = #{record.bookIsbn,jdbcType=VARCHAR},
+      quantity = #{record.quantity,jdbcType=INTEGER},
+      amount = #{record.amount,jdbcType=REAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+</mapper>

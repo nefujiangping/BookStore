@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BookStore</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">BookStore</string>
+    <string name="nav_header_subtitle">bookstore</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+	
+	<!-- 此处填写Web-Client的配置：config/index.js dev.port -->
+    <string name="web_client_home_page">http://<ip>:<port>/login</string>
+
+</resources>
