@@ -92,12 +92,16 @@ CREATE TABLE `bsuser` (
 -- Records of bsuser
 -- ----------------------------
 INSERT INTO `bsuser` VALUES ('1', '2', 'eccbc87e4b5ce2fe28308fd9f2a7baf3', '0');
+-- 123456
 INSERT INTO `bsuser` VALUES ('11111111@qq.com', 'Jayson', 'e10adc3949ba59abbe56e057f20f883e', '100000');
 INSERT INTO `bsuser` VALUES ('000000@qq.com', 'PPTV', 'e10adc3949ba59abbe56e057f20f883e', '0');
-INSERT INTO `bsuser` VALUES ('czw', '陈振威', 'c4ca4238a0b923820dcc509a6f75849b', '100000');
+-- 1
+INSERT INTO `bsuser` VALUES ('czw', 'czw', 'c4ca4238a0b923820dcc509a6f75849b', '100000');
+-- 1
 INSERT INTO `bsuser` VALUES ('jp', 'jp', 'c4ca4238a0b923820dcc509a6f75849b', '99619.5');
 INSERT INTO `bsuser` VALUES ('jp@qq.com', 'jayson', '827ccb0eea8a706c4c34a16891f84e7b', '0');
-INSERT INTO `bsuser` VALUES ('sys', '宋远生', 'c4ca4238a0b923820dcc509a6f75849b', '98695');
+-- 1
+INSERT INTO `bsuser` VALUES ('sys', 'sys', 'c4ca4238a0b923820dcc509a6f75849b', '98695');
 INSERT INTO `bsuser` VALUES ('test@qq.com', 'JP', 'e10adc3949ba59abbe56e057f20f883e', '0');
 INSERT INTO `bsuser` VALUES ('ttt@qq.com', 'Jayson01', 'e10adc3949ba59abbe56e057f20f883e', '0');
 
